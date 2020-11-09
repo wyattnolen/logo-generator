@@ -3,12 +3,11 @@ import React, { Component } from "react";
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
-    const canvas = null;
-    const ctx = null;
+    this.canvasRef = React.createRef();
   }
 
   componentDidMount() {
-    this.canvas = this.refs.canvas;
+    this.canvas = this.canvasRef.current;
     this.ctx = this.canvas.getContext("2d");
     this.ctx.font = "40px Courier";
   }
@@ -19,7 +18,7 @@ class Canvas extends React.Component {
   render() {
     return (
       <div>
-        <canvas ref="canvas" width={640} height={425} />
+        <canvas ref={this.canvasRef} width={640} height={425} />
       </div>
     );
   }
