@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Canvas from "./Canvas/Canvas";
+
+import "./App.css";
+import logo from "./logo.svg";
+
+class App extends Component {
+  state = {
+    logoText: "",
+  };
+
+  inputChangedHandler = (event) => {
+    this.setState({ logoText: event.target.value });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        {logo}
+        <p>Hint: Keep in mind that JavaScript strings are basically arrays!</p>
+        <hr />
+        <input
+          type="text"
+          onChange={this.inputChangedHandler}
+          value={this.state.logoText}
+        />
+        <p>{this.state.logoText}</p>
+        <Canvas input={this.state.logoText} />
+      </div>
+    );
+  }
 }
 
 export default App;
