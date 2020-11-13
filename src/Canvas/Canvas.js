@@ -16,7 +16,6 @@ class Canvas extends React.Component {
   }
 
   _downloadImage() {
-    // window.location.href = "data:image/png;base64," + this.canvas.toDataURL();
     let fileName = "image";
     const link = document.createElement("a");
     link.download = fileName + ".png";
